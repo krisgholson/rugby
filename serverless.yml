@@ -1,5 +1,5 @@
 service: rugby
-
+useDotenv: true
 frameworkVersion: '2'
 
 provider:
@@ -7,7 +7,13 @@ provider:
   runtime: python3.8
   lambdaHashingVersion: 20201221
   stage: ${opt:stage, 'prod'}
-  region: us-east-2
+  region: ${opt:region, 'us-east-2'}
+  apiGateway:
+    shouldStartNameWithService: true
+  deploymentBucket:
+    name: ${self:service}-${self:provider.stage}-${self:provider.region}-sls-deploys
+    blockPublicAccess: true
+    serverSideEncryption: AES256
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -49,6 +55,13 @@ custom:
     dockerizePip: non-linux
 
 functions:
+  registrations:
+    handler: handler.registrations
+    events:
+      - http:
+          method: GET
+          path: /registrations
+
   hello:
     handler: handler.hello
 #    The following are a few example events you can configure
