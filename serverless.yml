@@ -49,10 +49,19 @@ package:
 
 plugins:
   - serverless-python-requirements
+  - serverless-finch
+  - serverless-domain-manager
 
 custom:
   pythonRequirements:
     dockerizePip: non-linux
+  client:
+    bucketName: ${self:service}-${self:provider.stage}-${self:provider.region}
+  customDomain:
+    domainName: api.lowcountry.rugby
+    basePath: ''
+    stage: ${self:provider.stage}
+    createRoute53Record: true
 
 functions:
   registrations:

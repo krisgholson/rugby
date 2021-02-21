@@ -1,12 +1,22 @@
 import csv
+import os
 import requests
+from dotenv import load_dotenv
+load_dotenv()
+
+username = os.environ.get('SPORTLOMO_USERNAME')
+password = os.environ.get('SPORTLOMO_PASSWORD')
+
+print(username)
+print(password)
 
 base_url = "https://usarugby.sportsmanager.ie"
-auth = {'username': 'secret', 'password': 'secret'}
+auth = {'username': username, 'password': password}
 
 
 def main():
     get_members()
+
 
 def get_members():
     with requests.Session() as session:

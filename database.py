@@ -1,17 +1,23 @@
 from psycopg2 import connect
 import csv
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 db_name = 'rugby'
 db_user = 'postgres'
-db_password = 'secret'
+db_password = os.environ.get('POSTGRES_PASSWORD')
 db_host = 'localhost'
 table_name = 'usar_registration'
 
 members_file = '/tmp/members.csv'
 
 
-def load_db():
+def main():
+    load_db()
 
+
+def load_db():
     with open(members_file, 'r') as in_file:
         reader = csv.DictReader(in_file)
         members = list(reader)
@@ -100,6 +106,7 @@ def load_db():
         %s)"""
 
         for m in members:
+            print(m)
             record_to_insert = (m['Member ID'],
                                 m['Union'],
                                 m['Club'],
@@ -150,3 +157,7 @@ def load_db():
     finally:
         if conn is not None:
             conn.close()
+
+
+if __name__ == "__main__":
+    main()
