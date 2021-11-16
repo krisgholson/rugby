@@ -1,6 +1,27 @@
 # rugby
+Code and scripts to make managing rugby data a little bit easier.
 
-## deploy
+## setup
+Use pyenv to manage python version and virtual environments. See https://realpython.com/intro-to-pyenv/
+
+```
+# creating the virtualenv
+pyenv virtualenv 3.8.10 rugby
+
+# using it
+pyenv local rugby 
+pyenv activate rugby
+
+# install dependencies
+pip install -r requirements.txt
+```
+
+## running
+```bash
+python sportlomo/members.py
+```
+
+## deploy the web services
 
 one-time setup for domain
 ```bash
