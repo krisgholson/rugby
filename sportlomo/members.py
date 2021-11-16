@@ -2,7 +2,8 @@ import sportlomo
 
 
 def main():
-    members = sportlomo.members()
+    members = sportlomo.get_members()
+    print(members)
     print(len(members))
 
 
