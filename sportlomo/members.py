@@ -13,11 +13,11 @@ def main():
     data_frame = pd.DataFrame.from_records(data=members, index='national_number')
 
     # print(members)
-    print('total members length ' + str(len(members)))
+    print('member count (all SC): ' + str(len(members)))
     data_frame.sort_values(by=SORT_BY, inplace=True, key=lambda col: col.str.lower())
     filtered_df = data_frame.query("club == 'Charleston Youth and Junior Rugby' "
                                    "or club == 'Wando Rugby Football Club'")
-    print('filtered members length (WRFC) ' + str(len(filtered_df.index)))
+    print('member count (WRFC): ' + str(len(filtered_df.index)))
 
     filtered_df.to_csv('./dist/sportlomo_sc_export.csv', columns=EXPORT_COLUMNS)
 
