@@ -29,7 +29,7 @@ AUTH = {'username': username, 'password': password}
 
 def sportlomo_date_to_iso_date(date_string):
     """turn a typical sportlomo date string into an iso formatted date string"""
-    if date_string is None:
+    if not date_string:
         return None
     cleaned_date = date_string.replace("'", '')
     return datetime.strptime(cleaned_date, '%Y-%m-%d').isoformat() if cleaned_date else None
@@ -37,7 +37,7 @@ def sportlomo_date_to_iso_date(date_string):
 
 def registration_date_to_iso_date(date_string):
     """turn a sportlomo registration date string into an iso formatted date string"""
-    if date_string is None:
+    if not date_string:
         return None
     return datetime.strptime(date_string, '%m/%d/%Y %H:%M').isoformat()
 
