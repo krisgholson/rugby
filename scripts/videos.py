@@ -34,7 +34,7 @@ def process_video_files():
             print(os.path.join(process_dir, file))
             txt.write(f"file '{file}'\n")
 
-    video_file = os.path.join(process_dir, 'videos.mp4')
+    video_file = os.path.join(process_dir, 'video.mp4')
     # ffmpeg -f concat -i videos.txt -c copy video.mp4
     # -an removes sound
     concat_video = subprocess.run(
