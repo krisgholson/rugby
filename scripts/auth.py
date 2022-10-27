@@ -7,9 +7,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 load_dotenv()
 
 # If modifying these scopes, delete the file token.json.
-GOOGLE_SCOPES = ['https://www.googleapis.com/auth/gmail.labels',
-                 'https://www.googleapis.com/auth/gmail.compose',
-                 'https://www.googleapis.com/auth/spreadsheets']
+GOOGLE_SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
 
 
 def google_auth():
