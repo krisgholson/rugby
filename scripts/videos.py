@@ -59,12 +59,18 @@ def make_video_folder():
 
 
 def main():
+    # step 1
     # todays_video_dir = make_video_folder()
     # print(todays_video_dir)
     # copy_video_files(todays_video_dir)
+
+    # step 2
     process_dir = os.path.join(RUGBY_VIDEOS_DIR, PROCESS_DIR)
-    # process_video_files(process_dir)
-    upload(process_dir)
+    process_video_files(process_dir)
+
+    # step 3
+    # FIXME upload awaits audit from google so that videos can be public
+    # upload(process_dir)
 
 
 if __name__ == "__main__":
