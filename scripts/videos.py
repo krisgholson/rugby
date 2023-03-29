@@ -39,7 +39,16 @@ def process_video_files(process_dir):
     # ffmpeg -f concat -i videos.txt -c copy video.mp4
     # -an removes sound
     concat_video = subprocess.run(
-        ['ffmpeg', '-f', 'concat', '-i', txt_file, '-c', 'copy', '-an', video_file])
+        ['ffmpeg',
+         '-f',
+         'concat',
+         '-i',
+         txt_file,
+         '-c',
+         'copy',
+         '-an',
+         video_file]
+    )
     print("The concat_video exit code was: %d" % concat_video.returncode)
 
 
@@ -60,13 +69,13 @@ def make_video_folder():
 
 def main():
     # step 1
-    # todays_video_dir = make_video_folder()
-    # print(todays_video_dir)
-    # copy_video_files(todays_video_dir)
+    todays_video_dir = make_video_folder()
+    print(todays_video_dir)
+    copy_video_files(todays_video_dir)
 
     # step 2
-    process_dir = os.path.join(RUGBY_VIDEOS_DIR, PROCESS_DIR)
-    process_video_files(process_dir)
+    # process_dir = os.path.join(RUGBY_VIDEOS_DIR, PROCESS_DIR)
+    # process_video_files(process_dir)
 
     # step 3
     # FIXME upload awaits audit from google so that videos can be public
